@@ -1,0 +1,40 @@
+body {
+    background-color: #FB6F92;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (orientation: landscape)
+    and (min-width: 1280px)
+{
+    h1 {
+        font-size: 3.25rem;
+    }
+}
+
+@media screen and (orientation: landscape)
+    and (min-width: 1920px)
+{
+    h1 {
+        font-size: 5.25rem;
+    }
+}
+
+@media screen and (orientation: landscape)
+    and (min-width: 3840px)
+{
+    h1 {
+        font-size: 10.5rem;
+    }
+}

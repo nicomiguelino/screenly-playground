@@ -1,0 +1,21 @@
+app_id: 01H70WNRYYACVXW33ZPAVNZ0Z4
+root_asset_id: 01H73RX9ASKCJAKCC6TBSB0YPS
+user_version: ''
+revision: 14
+description: A simple Hello World app
+icon: ''
+author: Screenly, Inc.
+homepage_url: ''
+settings:
+  main_name:
+    type: text
+    default_value: stranger
+    title: main_name
+    optional: true
+    help_text: The name of someone to greet
+  screen_name:
+    type: text
+    default_value: someone
+    title: screen_name
+    optional: true
+    help_text: The name of the greeter
