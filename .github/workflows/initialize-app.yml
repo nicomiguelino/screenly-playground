@@ -48,12 +48,6 @@ jobs:
       - name: ⬇️ Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🔄 Modify APP_PATH based on app type
-        run: |
-          if [ "${{ inputs.app_type }}" = "react" ]; then
-            echo "APP_PATH=${{ env.APP_PATH }}/dist" >> "$GITHUB_ENV"
-          fi
-
       - name: 🛠 Install Node.js (React only)
         if: ${{ inputs.app_type == 'react' }}
         uses: actions/setup-node@v4
@@ -66,6 +60,12 @@ jobs:
         run: |
           npm install
           npm run build
+
+      - name: 🔄 Modify APP_PATH based on app type
+        run: |
+          if [ "${{ inputs.app_type }}" = "react" ]; then
+            echo "APP_PATH=${{ env.APP_PATH }}/dist" >> "$GITHUB_ENV"
+          fi
 
       - name: 🛠 Create Edge App
         uses: screenly/cli@master
@@ -87,7 +87,7 @@ jobs:
         uses: screenly/cli@master
         with:
           screenly_api_token: ${{ env.SCREENLY_API_TOKEN }}
-          cli_commands: edge-app instance create --path="${{ env.APP_PATH }}"
+          cli_commands: edge-app instance create --path="${{ env.APP_PATH }}" --name="${{ inputs.edge_app_title }}"
 
       - name: 🔄 Update Instance
         uses: screenly/cli@master
