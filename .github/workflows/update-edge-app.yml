@@ -43,8 +43,10 @@ jobs:
     steps:
       - name: Checkout master branch
         uses: actions/checkout@v4
-        with:
-          ref: master
+        # nico start - todo nico: uncomment when ready
+        # with:
+        #   ref: master
+        # nico end
 
       - name: Set up Node.js (React only)
         if: ${{ inputs.app_type == 'react' }}
