@@ -65,6 +65,9 @@ const App = () => {
   }
 
   useEffect(() => {
+    // nico start - todo nico: remove this when ready
+    console.log('screenly.settings', screenly.settings)
+    // nico end
     initializeGlobalBrandingSettings()
 
     const timeInterval = setInterval(updateDateTime, 1000)
