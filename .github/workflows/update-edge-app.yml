@@ -72,14 +72,14 @@ jobs:
           cli_commands: edge-app deploy --path=${{ env.APP_PATH }}
 
       # nico start - debug steps
-      - name: Log contents of screenly.yml
-        run: cat ${{ env.APP_PATH }}/${{ env.MANIFEST_FILE_NAME }}
+      # - name: Log contents of screenly.yml
+      #   run: cat ${{ env.APP_PATH }}/${{ env.MANIFEST_FILE_NAME }}
 
-      - name: Display contents of dist folder
-        run: ls -la ${{ env.APP_PATH }}/dist
+      # - name: Display contents of dist folder
+      #   run: ls -la ${{ env.APP_PATH }}/dist
 
-      - name: Log contents of dist/screenly.yml
-        run: cat ${{ env.APP_PATH }}/dist/screenly.yml
+      # - name: Log contents of dist/screenly.yml
+      #   run: cat ${{ env.APP_PATH }}/dist/screenly.yml
       # nico end
 
       - name: Deploy React Edge App
