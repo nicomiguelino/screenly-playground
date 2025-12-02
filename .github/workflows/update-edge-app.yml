@@ -31,13 +31,18 @@ on:
           - vanilla
           - bun
 
+      has_dist:
+        description: "Whether the app builds to a dist folder"
+        required: true
+        default: true
+        type: boolean
+
 run-name: Updating ${{ inputs.edge_app_name }} in ${{ inputs.environment }}
 
 jobs:
   deploy:
     name: Updating ${{ inputs.edge_app_name }} in ${{ inputs.environment }}
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     environment: ${{ inputs.environment }}
     env:
       API_BASE_URL: ${{ inputs.environment == 'stage' && 'https://api.screenlyappstage.com' || 'https://api.screenlyapp.com' }}
@@ -49,8 +54,6 @@ jobs:
     steps:
       - name: ⬇️  Checkout master branch
         uses: actions/checkout@v6
-        with:
-          ref: master
 
       - name: 🛠 Install Bun (React/Vue only)
         if: ${{ inputs.build_system == 'bun' }}
@@ -67,7 +70,7 @@ jobs:
 
       - name: 🔄 Modify APP_PATH based on app type
         run: |
-          if [ "${{ inputs.build_system }}" = "bun" ]; then
+          if [ "${{ inputs.build_system }}" = "bun" ] && [ "${{ inputs.has_dist }}" = "true" ]; then
             echo "APP_PATH=${{ env.APP_PATH }}/dist" >> "$GITHUB_ENV"
           fi
 
